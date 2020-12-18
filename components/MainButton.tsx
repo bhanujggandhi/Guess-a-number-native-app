@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../constants/color";
 
 type MainButtonProps = {
-  children: string;
+  children: any;
   onPress: () => void;
 };
 
