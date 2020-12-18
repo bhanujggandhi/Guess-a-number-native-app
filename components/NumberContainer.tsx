@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/color";
+import defaultStyles from "../constants/default-styles";
 
 type NumberContainerProps = {
   children: JSX.Element | number | undefined;
@@ -9,7 +10,9 @@ type NumberContainerProps = {
 const NumberContainer = ({ children }: NumberContainerProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.number}>{children}</Text>
+      <Text style={{ ...styles.number, ...defaultStyles.bodyText }}>
+        {children}
+      </Text>
     </View>
   );
 };

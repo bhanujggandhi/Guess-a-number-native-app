@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import Colors from "../constants/color";
+import defaultStyles from "../constants/default-styles";
 
 type HeaderProps = {
   title: string;
@@ -10,7 +11,9 @@ type HeaderProps = {
 const Header = ({ title }: HeaderProps) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>{title}</Text>
+      <Text style={{ ...defaultStyles.titleText, ...styles.headerTitle }}>
+        {title}
+      </Text>
     </View>
   );
 };
@@ -27,6 +30,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "black",
     fontSize: 18,
+    fontFamily: "open-sans-bold",
   },
 });
 
