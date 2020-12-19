@@ -38,7 +38,7 @@ const generateRandomBetween = (
 const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
   const initialGuess = generateRandomBetween(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-  const [pastGuesses, setPastGuesses] = useState<[number]>([initialGuess]);
+  const [pastGuesses, setPastGuesses] = useState<number[]>([initialGuess]);
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
