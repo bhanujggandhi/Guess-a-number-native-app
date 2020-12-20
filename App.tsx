@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-import Header from "./components/Header";
-import GameOverScreen from "./screens/GameOverScreen";
 import GameScreen from "./screens/GameScreen";
+import GameOverScreen from "./screens/GameOverScreen";
+import Header from "./components/Header";
 import StartScreen from "./screens/StartScreen";
 
 const fetchFonts = () => {

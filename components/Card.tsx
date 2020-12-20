@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import * as CSS from "csstype";
 
 type CardProps = {
   children: React.ReactNode;

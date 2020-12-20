@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+
 import Colors from "../constants/color";
 import defaultStyles from "../constants/default-styles";
 
@@ -24,8 +25,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 10,
-    alignItems: "center",
-    justifyContent: "center",
   },
   number: {
     color: Colors.accent,

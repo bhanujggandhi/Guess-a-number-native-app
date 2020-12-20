@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
 import Colors from "../constants/color";
+import defaultStyles from "../constants/default-styles";
 
 type MainButtonProps = {
   children: any;
@@ -11,7 +13,9 @@ const MainButton = ({ children, onPress }: MainButtonProps) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={styles.buttonText}>{children}</Text>
+        <Text style={{ ...defaultStyles.bodyText, ...styles.buttonText }}>
+          {children}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -26,7 +30,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontFamily: "open-sans",
     fontSize: 18,
   },
 });

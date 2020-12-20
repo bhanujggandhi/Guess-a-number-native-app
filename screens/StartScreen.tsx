@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor, ReactElement, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -31,6 +31,7 @@ const StartScreen = ({ onStartGame }: StartScreenProps) => {
 
   const resetInputHandler = () => {
     setEnteredValue("");
+    setConfirmed(false);
   };
 
   const confirmInputHandler = () => {
@@ -121,7 +122,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
-    fontFamily: "open-sans-bold",
   },
   inputContainer: { width: 300, maxWidth: "80%", alignItems: "center" },
   buttonContainer: {
