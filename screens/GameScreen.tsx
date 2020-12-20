@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  Alert,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import Card from "../components/Card";
@@ -14,25 +7,12 @@ import MainButton from "../components/MainButton";
 import NumberContainer from "../components/NumberContainer";
 
 import defaultStyles from "../constants/default-styles";
+import generateRandomBetween from "../utils/generateRadomBetween";
+import PastList from "../components/PastList";
 
 type GameScreenProps = {
   userChoice: number;
   onGameOver: (numberOfRounds: number) => void;
-};
-
-const generateRandomBetween = (
-  min: number,
-  max: number,
-  exclude: number
-): number => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  const randomNum = Math.floor(Math.random() * (max - min)) + min;
-  if (randomNum === exclude) {
-    return generateRandomBetween(min, max, exclude);
-  } else {
-    return randomNum;
-  }
 };
 
 const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
@@ -74,12 +54,6 @@ const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
     setPastGuesses((curPastGuesses) => [nextNum, ...curPastGuesses]);
   };
 
-  const renderList = (value: number, numOfRounds: number) => (
-    <View key={value} style={styles.listItem}>
-      <Text style={defaultStyles.bodyText}>#{numOfRounds}</Text>
-      <Text style={defaultStyles.bodyText}>{value}</Text>
-    </View>
-  );
   return (
     <View style={styles.screen}>
       <Text style={defaultStyles.bodyText}>Opponent's Guess</Text>
@@ -93,11 +67,7 @@ const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
         </MainButton>
       </Card>
       <View style={styles.listContainer}>
-        <ScrollView contentContainerStyle={styles.list}>
-          {pastGuesses.map((pastGuess, idx) =>
-            renderList(pastGuess, pastGuesses.length - idx)
-          )}
-        </ScrollView>
+        <PastList pastGuesses={pastGuesses} />
       </View>
     </View>
   );
@@ -119,20 +89,6 @@ const styles = StyleSheet.create({
   listContainer: {
     width: "80%",
     flex: 1,
-  },
-  list: {
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
-  listItem: {
-    borderColor: "#ccc",
-    padding: 15,
-    marginVertical: 10,
-    backgroundColor: "white",
-    borderWidth: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "60%",
   },
 });
 

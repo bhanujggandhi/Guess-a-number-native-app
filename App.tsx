@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import * as Font from "expo-font";
+import { StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 
 import GameScreen from "./screens/GameScreen";
@@ -8,12 +7,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 import Header from "./components/Header";
 import StartScreen from "./screens/StartScreen";
 
-const fetchFonts = () => {
-  return Font.loadAsync({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-  });
-};
+import fetchFonts from "./utils/fetchFonts";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState<number | undefined>();
