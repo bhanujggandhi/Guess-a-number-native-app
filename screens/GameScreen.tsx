@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import Card from "../components/Card";
