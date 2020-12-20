@@ -11,9 +11,7 @@ type HeaderProps = {
 const Header = ({ title }: HeaderProps) => {
   return (
     <View style={styles.header}>
-      <Text style={{ ...defaultStyles.titleText, ...styles.headerTitle }}>
-        {title}
-      </Text>
+      <Text style={{ ...defaultStyles.titleText }}>{title}</Text>
     </View>
   );
 };
@@ -26,11 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     alignItems: "center",
     justifyContent: "center",
-  },
-  headerTitle: {
-    color: "black",
-    fontSize: 18,
-    fontFamily: "open-sans-bold",
   },
 });
 
