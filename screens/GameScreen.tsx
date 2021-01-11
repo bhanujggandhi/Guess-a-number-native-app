@@ -19,8 +19,27 @@ const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
   const initialGuess = generateRandomBetween(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState<number[]>([initialGuess]);
+  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
+    Dimensions.get("window").width
+  );
+  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(
+    Dimensions.get("window").height
+  );
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setAvailableDeviceHeight(Dimensions.get("window").height);
+      setAvailableDeviceWidth(Dimensions.get("window").width);
+    };
+
+    Dimensions.addEventListener("change", updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  });
 
   useEffect(() => {
     if (currentGuess === userChoice) {
@@ -54,6 +73,26 @@ const GameScreen = ({ userChoice, onGameOver }: GameScreenProps) => {
     setPastGuesses((curPastGuesses) => [nextNum, ...curPastGuesses]);
   };
 
+  if (Dimensions.get("window").height < 500) {
+    return (
+      <View style={styles.screen}>
+        <Text style={defaultStyles.bodyText}>Opponent's Guess</Text>
+        <View style={styles.controls}>
+          <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
+            <Ionicons name='md-remove' size={24} color='white' />
+          </MainButton>
+          <NumberContainer>{currentGuess}</NumberContainer>
+          <MainButton onPress={nextGuessHandler.bind(this, "greater")}>
+            <Ionicons name='md-add' size={24} color='white' />
+          </MainButton>
+        </View>
+        <View style={styles.listContainer}>
+          <PastList pastGuesses={pastGuesses} />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.screen}>
       <Text style={defaultStyles.bodyText}>Opponent's Guess</Text>
@@ -85,6 +124,12 @@ const styles = StyleSheet.create({
     marginTop: Dimensions.get("window").height > 600 ? 20 : 5,
     width: 400,
     maxWidth: "90%",
+  },
+  controls: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: "80%",
   },
   listContainer: {
     width: Dimensions.get("window").width > 400 ? "60%" : "80%",
