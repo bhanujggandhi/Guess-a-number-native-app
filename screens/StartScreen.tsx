@@ -123,7 +123,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 10,
   },
-  inputContainer: { width: 300, maxWidth: "80%", alignItems: "center" },
+  inputContainer: {
+    width: "80%",
+    minWidth: 300,
+    maxWidth: "95%",
+    alignItems: "center",
+  },
   buttonContainer: {
     flexDirection: "row",
     width: "100%",
