@@ -5,3 +5,4 @@ Tech Stack:
 Typescript, JS
 
 # Guess-a-number-native-app
+npm run
